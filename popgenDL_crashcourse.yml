@@ -1,0 +1,21 @@
+#conda yaml file
+name: popgenDL_crashcourse
+
+channels:
+  - bioconda
+  - conda-forge
+  - defaults
+
+dependencies:
+  - pytorch 
+  - torchvision
+  - cudatoolkit
+  - ipykernel
+  - jupyter
+  - jupyter-cache
+  - msprime
+  - gpustat
+  - matplotlib
+  - numpy
+  - pandas
+  - r-quarto
