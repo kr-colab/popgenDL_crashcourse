@@ -112,7 +112,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
-<p># Deep Learning Popgen Crash Course</p>
+<section id="deep-learning-popgen-crash-course" class="level1">
+<h1>Deep Learning Popgen Crash Course</h1>
 <p>Here’s a quick tutorial on how you might deploy deep learning to solve a popgen problem.</p>
 <p>The lab has historically used Tensorflow and Keras, but we’re moving toward PyTorch, so we’ll use that here. A lot of the details overlap, and it’s useful to know both (at least a little).</p>
 <ol type="1">
@@ -436,34 +437,34 @@ Turns out batching data like this also has benefits for optimization, but even i
 <span id="cb12-36"><a href="#cb12-36" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> epoch <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>:</span>
 <span id="cb12-37"><a href="#cb12-37" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f'Epoch </span><span class="sc">{</span>epoch<span class="sc">}</span><span class="ss"> Loss </span><span class="sc">{</span>loss<span class="sc">.</span>item()<span class="sc">:.4f}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Epoch 0 Loss 0.2600</code></pre>
+<pre><code>Epoch 0 Loss 0.3823</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Epoch 2 Loss 0.1398</code></pre>
+<pre><code>Epoch 2 Loss 0.1863</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Epoch 4 Loss 0.0686</code></pre>
+<pre><code>Epoch 4 Loss 0.0580</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Epoch 6 Loss 0.1276</code></pre>
+<pre><code>Epoch 6 Loss 0.0840</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Epoch 8 Loss 0.4606</code></pre>
+<pre><code>Epoch 8 Loss 0.0409</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Epoch 10 Loss 0.1594</code></pre>
+<pre><code>Epoch 10 Loss 0.1573</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Epoch 12 Loss 0.0647</code></pre>
+<pre><code>Epoch 12 Loss 0.1474</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Epoch 14 Loss 0.0273</code></pre>
+<pre><code>Epoch 14 Loss 0.0535</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Epoch 16 Loss 0.1496</code></pre>
+<pre><code>Epoch 16 Loss 0.3484</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Epoch 18 Loss 0.0246</code></pre>
+<pre><code>Epoch 18 Loss 0.0359</code></pre>
 </div>
 </div>
 </section>
@@ -477,9 +478,11 @@ Turns out batching data like this also has benefits for optimization, but even i
 <span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>    ax.scatter(popgen_training.Ne_scaling<span class="op">*</span>y_batch.item(), popgen_training.Ne_scaling<span class="op">*</span>pred.item(), color <span class="op">=</span> <span class="st">'black'</span>)</span>
 <span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>one_one <span class="op">=</span> np.linspace(popgen_training.Ne_low, popgen_training.Ne_high, <span class="dv">100</span>)</span>
 <span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>ax.plot(one_one, one_one)</span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">"Simulated $N_e$"</span>)</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">"Predicted $N_e$"</span>)</span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="popgenDL_crashcourse_files/figure-html/cell-10-output-1.png" width="571" height="442"></p>
+<p><img src="popgenDL_crashcourse_files/figure-html/cell-10-output-1.png" width="590" height="445"></p>
 </div>
 </div>
 </section>
@@ -489,12 +492,12 @@ Turns out batching data like this also has benefits for optimization, but even i
 <p>So that went pretty well. This is pretty bare bones, but hopefully it gives you a sense of how you might approach a popgen problem with deep learning.</p>
 <p>Here’s somethign you might try to edit in the above to gain more familiarity with the process.</p>
 <ul>
-<li><p>What’s the current speed bottleneck in the process and how might you speed things up?</p></li>
 <li><p>Try other architectures, loss functions, and optimizers.</p></li>
 <li><p>Modify hyperparameters. What is numsites and what happens if you change it?</p></li>
 <li><p>How else could we monitor training progress? Did we use the validation data?</p>
 <p>Answer: No we did not, but how can we incorporate it?</p></li>
 </ul>
+</section>
 </section>
 
 </main>

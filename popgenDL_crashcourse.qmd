@@ -2,8 +2,8 @@
 jupyter: python3
 ---
 
- # Deep Learning Popgen Crash Course
- 
+# Deep Learning Popgen Crash Course
+
  Here's a quick tutorial on how you might deploy 
  deep learning to solve a popgen problem.
 
@@ -326,16 +326,17 @@ for x_batch, y_batch in training_dfs[2]:
     ax.scatter(popgen_training.Ne_scaling*y_batch.item(), popgen_training.Ne_scaling*pred.item(), color = 'black')
 one_one = np.linspace(popgen_training.Ne_low, popgen_training.Ne_high, 100)
 ax.plot(one_one, one_one)
+ax.set_xlabel("Simulated $N_e$")
+ax.set_ylabel("Predicted $N_e$")
 plt.show()
 ```
+
 
 ## Postscript 
 
 So that went pretty well. This is pretty bare bones, but hopefully it gives you a sense of how you might approach a popgen problem with deep learning. 
 
 Here's somethign you might try to edit in the above to gain more familiarity with the process.
-
-- What's the current speed bottleneck in the process and how might you speed things up?
 
 - Try other architectures, loss functions, and optimizers.
 
